@@ -1,0 +1,433 @@
+{
+  "version": 1,
+  "generated_at": "2025-10-18T11:33:26.965637+00:00",
+  "categories": [
+    {
+      "key": "bleed",
+      "label": "Bleed Damage",
+      "group": "Offensive Debuffs",
+      "classes": [
+        "Druid",
+        "Hunter",
+        "Warrior"
+      ],
+      "spells": [
+        {
+          "id": 48564,
+          "name": "Mangle (Bear)",
+          "class": "Druid",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 48566,
+          "name": "Mangle (Cat)",
+          "class": "Druid",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 57386,
+          "name": "Stampede",
+          "class": "Hunter",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 46857,
+          "name": "Trauma",
+          "class": "Warrior",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "physical_damage",
+      "label": "Physical Damage",
+      "group": "Offensive Debuffs",
+      "classes": [
+        "Rogue",
+        "Warrior"
+      ],
+      "spells": [
+        {
+          "id": 58683,
+          "name": "Savage Combat",
+          "class": "Rogue",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 413763,
+          "name": "Blood Frenzy",
+          "class": "Warrior",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "crit",
+      "label": "Crit",
+      "group": "Offensive Debuffs",
+      "classes": [
+        "Paladin",
+        "Rogue",
+        "Shaman"
+      ],
+      "spells": [
+        {
+          "id": 54499,
+          "name": "Heart of the Crusader",
+          "class": "Paladin",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 57970,
+          "name": "Master Poisoner",
+          "class": "Rogue",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 63283,
+          "name": "Totem of Wrath",
+          "class": "Shaman",
+          "type": "raid_buff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "spell_crit",
+      "label": "Spell Crit",
+      "group": "Offensive Debuffs",
+      "classes": [
+        "Mage",
+        "Warlock"
+      ],
+      "spells": [
+        {
+          "id": 12579,
+          "name": "Winter's Chill",
+          "class": "Mage",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 63094,
+          "name": "Winter's Chill (Frostfire)",
+          "class": "Mage",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 22959,
+          "name": "Improved Scorch",
+          "class": "Mage",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 12873,
+          "name": "Improved Scorch (Rank 3)",
+          "class": "Mage",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 17800,
+          "name": "Shadow Mastery",
+          "class": "Warlock",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "spell_hit",
+      "label": "Spell Hit",
+      "group": "Offensive Debuffs",
+      "classes": [
+        "Druid",
+        "Priest"
+      ],
+      "spells": [
+        {
+          "id": 770,
+          "name": "Faerie Fire",
+          "class": "Druid",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 33198,
+          "name": "Misery",
+          "class": "Priest",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "spell_damage",
+      "label": "Spell Damage",
+      "group": "Offensive Debuffs",
+      "classes": [
+        "Deathknight",
+        "Druid",
+        "Warlock"
+      ],
+      "spells": [
+        {
+          "id": 51735,
+          "name": "Ebon Plague",
+          "class": "Deathknight",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 60433,
+          "name": "Earth and Moon",
+          "class": "Druid",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 47865,
+          "name": "Curse of the Elements",
+          "class": "Warlock",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "armor_major",
+      "label": "Armor (Major)",
+      "group": "Reduction Debuffs",
+      "classes": [
+        "Hunter",
+        "Rogue",
+        "Warrior"
+      ],
+      "spells": [
+        {
+          "id": 58567,
+          "name": "Sunder Armor",
+          "class": "Warrior",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 8647,
+          "name": "Expose Armor",
+          "class": "Rogue",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 48669,
+          "name": "Expose Armor (Rank 5)",
+          "class": "Rogue",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 55754,
+          "name": "Acid Spit",
+          "class": "Hunter",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 59270,
+          "name": "Corrosive Spit",
+          "class": "Hunter",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 66880,
+          "name": "Acid Spit (Worm)",
+          "class": "Hunter",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "armor_minor",
+      "label": "Armor (Minor)",
+      "group": "Reduction Debuffs",
+      "classes": [
+        "Druid",
+        "Hunter",
+        "Warlock"
+      ],
+      "spells": [
+        {
+          "id": 50511,
+          "name": "Curse of Weakness",
+          "class": "Warlock",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 770,
+          "name": "Faerie Fire",
+          "class": "Druid",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 16857,
+          "name": "Faerie Fire (Feral)",
+          "class": "Druid",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 56631,
+          "name": "Sting",
+          "class": "Hunter",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "attack_speed",
+      "label": "Attack Speed",
+      "group": "Reduction Debuffs",
+      "classes": [
+        "Deathknight",
+        "Druid",
+        "Paladin",
+        "Warrior"
+      ],
+      "spells": [
+        {
+          "id": 47502,
+          "name": "Thunder Clap",
+          "class": "Warrior",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 68055,
+          "name": "Judgements of the Just",
+          "class": "Paladin",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 48485,
+          "name": "Infected Wounds",
+          "class": "Druid",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 58181,
+          "name": "Infected Wounds (Rank 2)",
+          "class": "Druid",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 55095,
+          "name": "Frost Fever",
+          "class": "Deathknight",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "attack_power",
+      "label": "Attack Power",
+      "group": "Reduction Debuffs",
+      "classes": [
+        "Druid",
+        "Paladin",
+        "Warlock",
+        "Warrior"
+      ],
+      "spells": [
+        {
+          "id": 47437,
+          "name": "Demoralizing Shout",
+          "class": "Warrior",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 48560,
+          "name": "Demoralizing Roar",
+          "class": "Druid",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 50511,
+          "name": "Curse of Weakness",
+          "class": "Warlock",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 26017,
+          "name": "Vindication",
+          "class": "Paladin",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "physical_hit",
+      "label": "Physical Hit",
+      "group": "Reduction Debuffs",
+      "classes": [
+        "Druid",
+        "Hunter"
+      ],
+      "spells": [
+        {
+          "id": 48468,
+          "name": "Insect Swarm",
+          "class": "Druid",
+          "type": "boss_debuff",
+          "aliases": []
+        },
+        {
+          "id": 3043,
+          "name": "Scorpid Sting",
+          "class": "Hunter",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "key": "crystal_yield",
+      "label": "Armor (C. Yield)",
+      "group": "Reduction Debuffs",
+      "classes": [
+        "Anyone"
+      ],
+      "spells": [
+        {
+          "id": 15235,
+          "name": "Crystal Yield",
+          "class": "Any",
+          "type": "boss_debuff",
+          "aliases": []
+        }
+      ]
+    }
+  ]
+}

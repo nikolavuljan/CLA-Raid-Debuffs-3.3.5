@@ -1,0 +1,32 @@
+# Python / build artefacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.Python
+.venv/
+venv/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+
+# Logs & temporary files
+*.log
+*.tmp
+*.bak
+*.txt
+*:Zone.Identifier
+
+# Generated outputs
+*.html
+*.json
+!cla_map.json
+!README.md
+
+wclapicla/
+
+# OS files
+.DS_Store
+Thumbs.db
