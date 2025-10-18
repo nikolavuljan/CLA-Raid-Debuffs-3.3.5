@@ -2,7 +2,8 @@
 
 Utilities for analysing Wrath of the Lich King (3.3.5) combat logs and reporting raid debuff coverage in the same structure as the Google Sheets CLA workbook.
 
-<img width="1732" height="653" alt="image" src="https://github.com/user-attachments/assets/11ba5ee7-f86e-4ebd-bd34-9881826cfe74" />
+<img width="1744" height="667" alt="image" src="https://github.com/user-attachments/assets/23e1d568-6c5d-4e73-8c5d-5c0f4ba817b2" />
+
 
 
 ## Prerequisites
