@@ -51,21 +51,21 @@
         "Rogue",
         "Warrior"
       ],
-      "spells": [
-        {
-          "id": 58683,
-          "name": "Savage Combat",
-          "class": "Rogue",
-          "type": "boss_debuff",
-          "aliases": []
-        },
-        {
-          "id": 413763,
-          "name": "Blood Frenzy",
-          "class": "Warrior",
-          "type": "boss_debuff",
-          "aliases": []
-        }
+        "spells": [
+          {
+            "id": 58683,
+            "name": "Savage Combat",
+            "class": "Rogue",
+            "type": "boss_debuff",
+            "aliases": []
+          },
+          {
+            "id": 30070,
+            "name": "Blood Frenzy",
+            "class": "Warrior",
+            "type": "boss_debuff",
+            "aliases": []
+          }
       ],
       "effect": "4% physical damage"
     },
