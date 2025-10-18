@@ -49,6 +49,10 @@ REMOVE_EVENTS = {"SPELL_AURA_REMOVED", "SPELL_AURA_BROKEN", "SPELL_AURA_BROKEN_S
 OFF_NO_CRIT_INDICES = [0, 1, 3, 4, 5]
 REDUCTION_INDICES = [6, 7, 8, 9, 10]
 
+BLOOD_FRENZY_PROXY_SPELL_ID = 46857  # Trauma
+BLOOD_FRENZY_SYNTHETIC_SPELL_ID = 30070  # Blood Frenzy
+PHYSICAL_DAMAGE_CATEGORY_KEY = "physical_damage"
+
 
 # ---------------------------- Data classes --------------------------------- #
 
@@ -506,6 +510,11 @@ def track_fight(
     trackers = [CategoryTracker(cat.key) for cat in categories]
     start = fight.start_time
     end = fight.end_time
+    physical_idx = next(
+        (i for i, cat in enumerate(categories) if cat.key == PHYSICAL_DAMAGE_CATEGORY_KEY),
+        None,
+    )
+    trauma_seen = False
 
     # Reactivate any relevant aura already up at pull
     for key, spell in list(global_active.items()):
@@ -528,6 +537,8 @@ def track_fight(
         for cat_idx, spell in matches:
             if not destination_is_valid(spell, event.dest_guid or ""):
                 continue
+            if spell.spell_id == BLOOD_FRENZY_PROXY_SPELL_ID:
+                trauma_seen = True
             tracker = trackers[cat_idx]
             if event.event_type in APPLY_EVENTS:
                 tracker.activate(key, event.timestamp)
@@ -548,6 +559,17 @@ def track_fight(
         tracker.finalize(end)
 
     uptimes = [tracker.uptime(start, end) for tracker in trackers]
+    original_physical = (
+        uptimes[physical_idx] if physical_idx is not None else None
+    )
+    synthetic_physical = False
+    if (
+        trauma_seen
+        and physical_idx is not None
+        and (original_physical or 0.0) < 0.999
+    ):
+        uptimes[physical_idx] = 1.0
+        synthetic_physical = True
     overall = compute_overall(uptimes)
 
     fight_duration = max(0.0, end - start)
@@ -572,6 +594,17 @@ def track_fight(
                 }
             )
         detail_map[cat_cfg.key] = details
+
+    if synthetic_physical and physical_idx is not None:
+        phys_key = categories[physical_idx].key
+        detail_map.setdefault(phys_key, []).append(
+            {
+                "spell_id": BLOOD_FRENZY_SYNTHETIC_SPELL_ID,
+                "spell_name": "Blood Frenzy (assumed via Trauma)",
+                "class": "Warrior",
+                "uptime": 1.0,
+            }
+        )
 
     start_event = events[fight.start_idx]
     boss_guid = (
