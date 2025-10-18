@@ -11,6 +11,7 @@
         "Hunter",
         "Warrior"
       ],
+      "effect": "30% bleed damage",
       "spells": [
         {
           "id": 48564,
@@ -65,7 +66,8 @@
           "type": "boss_debuff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "4% physical damage"
     },
     {
       "key": "crit",
@@ -98,7 +100,8 @@
           "type": "raid_buff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "3% melee/ranged crit"
     },
     {
       "key": "spell_crit",
@@ -144,7 +147,8 @@
           "type": "boss_debuff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "5% spell crit"
     },
     {
       "key": "spell_hit",
@@ -169,7 +173,8 @@
           "type": "boss_debuff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "3% spell hit"
     },
     {
       "key": "spell_damage",
@@ -202,7 +207,8 @@
           "type": "boss_debuff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "13% spell damage"
     },
     {
       "key": "armor_major",
@@ -256,7 +262,8 @@
           "type": "boss_debuff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "20% armor reduction"
     },
     {
       "key": "armor_minor",
@@ -296,7 +303,8 @@
           "type": "boss_debuff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "5% armor reduction"
     },
     {
       "key": "attack_speed",
@@ -344,7 +352,8 @@
           "type": "boss_debuff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "20% attack speed slow"
     },
     {
       "key": "attack_power",
@@ -385,7 +394,8 @@
           "type": "boss_debuff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "574 attack power reduction"
     },
     {
       "key": "physical_hit",
@@ -410,7 +420,8 @@
           "type": "boss_debuff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "3% physical hit"
     },
     {
       "key": "crystal_yield",
@@ -427,7 +438,8 @@
           "type": "boss_debuff",
           "aliases": []
         }
-      ]
+      ],
+      "effect": "200 armor reduction"
     }
   ]
 }

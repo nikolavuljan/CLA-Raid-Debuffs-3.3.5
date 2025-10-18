@@ -67,6 +67,7 @@ class CategoryConfig:
     label: str
     group: str
     classes: List[str]
+    effect: Optional[str]
     spells: List[SpellConfig]
 
 
@@ -178,6 +179,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "bleed",
             "label": "Bleed Damage",
             "group": "Offensive Debuffs",
+            "effect": "30% bleed damage",
             "classes": ["Druid", "Hunter", "Warrior"],
             "spells": [
                 {"id": 48564, "name": "Mangle (Bear)", "class": "Druid", "type": "boss_debuff"},
@@ -190,6 +192,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "physical_damage",
             "label": "Physical Damage",
             "group": "Offensive Debuffs",
+            "effect": "4% physical damage",
             "classes": ["Rogue", "Warrior"],
             "spells": [
                 {"id": 58683, "name": "Savage Combat", "class": "Rogue", "type": "boss_debuff"},
@@ -200,6 +203,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "crit",
             "label": "Crit",
             "group": "Offensive Debuffs",
+            "effect": "3% melee/ranged crit",
             "classes": ["Paladin", "Rogue", "Shaman"],
             "spells": [
                 {"id": 54499, "name": "Heart of the Crusader", "class": "Paladin", "type": "boss_debuff"},
@@ -211,6 +215,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "spell_crit",
             "label": "Spell Crit",
             "group": "Offensive Debuffs",
+            "effect": "5% spell crit",
             "classes": ["Mage", "Warlock"],
             "spells": [
                 {"id": 12579, "name": "Winter's Chill", "class": "Mage", "type": "boss_debuff"},
@@ -224,6 +229,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "spell_hit",
             "label": "Spell Hit",
             "group": "Offensive Debuffs",
+            "effect": "3% spell hit",
             "classes": ["Druid", "Priest"],
             "spells": [
                 {"id": 770, "name": "Faerie Fire", "class": "Druid", "type": "boss_debuff"},
@@ -234,6 +240,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "spell_damage",
             "label": "Spell Damage",
             "group": "Offensive Debuffs",
+            "effect": "13% spell damage",
             "classes": ["Deathknight", "Druid", "Warlock"],
             "spells": [
                 {"id": 51735, "name": "Ebon Plague", "class": "Deathknight", "type": "boss_debuff"},
@@ -245,6 +252,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "armor_major",
             "label": "Armor (Major)",
             "group": "Reduction Debuffs",
+            "effect": "20% armor reduction",
             "classes": ["Hunter", "Rogue", "Warrior"],
             "spells": [
                 {"id": 58567, "name": "Sunder Armor", "class": "Warrior", "type": "boss_debuff"},
@@ -259,6 +267,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "armor_minor",
             "label": "Armor (Minor)",
             "group": "Reduction Debuffs",
+            "effect": "5% armor reduction",
             "classes": ["Druid", "Hunter", "Warlock"],
             "spells": [
                 {"id": 50511, "name": "Curse of Weakness", "class": "Warlock", "type": "boss_debuff"},
@@ -271,6 +280,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "attack_speed",
             "label": "Attack Speed",
             "group": "Reduction Debuffs",
+            "effect": "20% attack speed slow",
             "classes": ["Deathknight", "Druid", "Paladin", "Warrior"],
             "spells": [
                 {"id": 47502, "name": "Thunder Clap", "class": "Warrior", "type": "boss_debuff"},
@@ -284,6 +294,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "attack_power",
             "label": "Attack Power",
             "group": "Reduction Debuffs",
+            "effect": "574 attack power reduction",
             "classes": ["Druid", "Paladin", "Warlock", "Warrior"],
             "spells": [
                 {"id": 47437, "name": "Demoralizing Shout", "class": "Warrior", "type": "boss_debuff"},
@@ -296,6 +307,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "physical_hit",
             "label": "Physical Hit",
             "group": "Reduction Debuffs",
+            "effect": "3% physical hit",
             "classes": ["Druid", "Hunter"],
             "spells": [
                 {"id": 48468, "name": "Insect Swarm", "class": "Druid", "type": "boss_debuff"},
@@ -306,6 +318,7 @@ def default_mapping() -> Dict[str, object]:
             "key": "crystal_yield",
             "label": "Armor (C. Yield)",
             "group": "Reduction Debuffs",
+            "effect": "20% armor reduction",
             "classes": ["Anyone"],
             "spells": [
                 {"id": 15235, "name": "Crystal Yield", "class": "Any", "type": "boss_debuff"},
@@ -345,6 +358,7 @@ def load_mapping() -> List[CategoryConfig]:
                 label=cat["label"],
                 group=cat["group"],
                 classes=cat["classes"],
+                effect=cat.get("effect"),
                 spells=spells,
             )
         )
@@ -653,6 +667,7 @@ def process_log(path: Path) -> Dict[str, object]:
                 "label": cat.label,
                 "group": cat.group,
                 "classes": cat.classes,
+                "effect": cat.effect,
             }
             for cat in categories
         ],

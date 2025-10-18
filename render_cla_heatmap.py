@@ -71,8 +71,8 @@ def render_heatmap(data: Dict[str, object], title: Optional[str] = None) -> str:
         raise ValueError("Invalid JSON structure: missing 'categories' or 'table'.")
 
     column_meta = [
-        {"key": "boss", "label": "Boss / Result", "classes": [], "group": None},
-        {"key": "overall", "label": "Overall", "classes": [], "group": None},
+        {"key": "boss", "label": "Boss / Result", "classes": [], "group": None, "effect": None},
+        {"key": "overall", "label": "Overall", "classes": [], "group": None, "effect": None},
     ]
     for cat in categories:
         column_meta.append(
@@ -81,6 +81,7 @@ def render_heatmap(data: Dict[str, object], title: Optional[str] = None) -> str:
                 "label": cat["label"],
                 "classes": cat.get("classes", []),
                 "group": cat.get("group"),
+                "effect": cat.get("effect"),
             }
         )
     column_labels = [meta["key"] for meta in column_meta]
@@ -122,10 +123,17 @@ def render_heatmap(data: Dict[str, object], title: Optional[str] = None) -> str:
         group = meta_entry.get("group")
         class_list = meta_entry.get("classes") or []
         if not group:
-            sub_html = ""
+            sub_html_parts = []
             if class_list:
-                sub_text = " • ".join(class_list)
-                sub_html = f'<div class="header-sub">{sub_text}</div>'
+                sub_html_parts.append(" • ".join(class_list))
+            effect = meta_entry.get("effect")
+            if effect:
+                sub_html_parts.append(effect)
+            sub_html = ""
+            if sub_html_parts:
+                sub_html = "".join(
+                    f'<div class="header-sub">{part}</div>' for part in sub_html_parts
+                )
             top_row_cells.append(
                 f'<th class="group-sticky" rowspan="2"><div class="header-label">{label}</div>{sub_html}</th>'
             )
@@ -148,15 +156,16 @@ def render_heatmap(data: Dict[str, object], title: Optional[str] = None) -> str:
             continue
         label = meta_entry["label"]
         class_list = meta_entry.get("classes") or []
+        effect = meta_entry.get("effect")
+        sub_parts = []
         if class_list:
-            sub = " • ".join(class_list)
-            bottom_row_cells.append(
-                f'<th><div class="header-label">{label}</div><div class="header-sub">{sub}</div></th>'
-            )
-        else:
-            bottom_row_cells.append(
-                f'<th><div class="header-label">{label}</div></th>'
-            )
+            sub_parts.append(" • ".join(class_list))
+        if effect:
+            sub_parts.append(effect)
+        sub_html = "".join(f'<div class="header-sub">{part}</div>' for part in sub_parts)
+        bottom_row_cells.append(
+            f'<th><div class="header-label">{label}</div>{sub_html}</th>'
+        )
 
     top_row_html = "".join(top_row_cells)
     bottom_row_html = "".join(bottom_row_cells)
