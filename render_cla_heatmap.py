@@ -171,19 +171,20 @@ def render_heatmap(data: Dict[str, object], title: Optional[str] = None) -> str:
     bottom_row_html = "".join(bottom_row_cells)
 
     style = """
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 32px; background: #f6f6f6; }
+    :root { color-scheme: dark; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 32px; background: #101214; color: #e8eaed; }
     h1 { margin-bottom: 12px; font-size: 24px; }
-    .meta { color: #555; margin-bottom: 20px; }
-    table { border-collapse: collapse; min-width: 960px; }
-    th, td { border: 1px solid #bfbfbf; padding: 8px 10px; text-align: center; }
-    th { background: #f0f0f0; position: sticky; top: 0; }
-    th.boss-col { text-align: left; font-weight: 600; min-width: 280px; background: #f8f8f8; }
-    tr:nth-child(even) > th.boss-col { background: #f3f3f3; }
-    td { color: #1f1f1f; font-weight: 600; }
+    .meta { color: #9aa0a6; margin-bottom: 20px; }
+    table { border-collapse: collapse; min-width: 960px; background: #1a1c20; box-shadow: 0 12px 32px rgba(0,0,0,0.45); }
+    th, td { border: 1px solid #2a2d32; padding: 8px 10px; text-align: center; }
+    th { background: #20232a; position: sticky; top: 0; z-index: 2; }
+    th.boss-col { text-align: left; font-weight: 600; min-width: 280px; background: #1f2126; }
+    tr:nth-child(even) > th.boss-col { background: #191b20; }
+    td { color: #f1f3f4; font-weight: 600; }
     .header-label { font-weight: 600; }
-    .header-sub { font-size: 12px; color: #555; margin-top: 4px; white-space: nowrap; }
-    .group-header { text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; background: #e6e6e6; }
-    .group-sticky { background: #f0f0f0; }
+    .header-sub { font-size: 12px; color: #9aa0a6; margin-top: 4px; white-space: nowrap; }
+    .group-header { text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; background: #262b33; color: #cdd3d8; }
+    .group-sticky { background: #20232a; }
     """
 
     meta_lines = []
