@@ -70,8 +70,20 @@ def render_heatmap(data: Dict[str, object], title: Optional[str] = None) -> str:
     if not isinstance(categories, list) or not isinstance(table, list):
         raise ValueError("Invalid JSON structure: missing 'categories' or 'table'.")
 
-    column_labels = ["boss", "overall"] + [cat["label"] for cat in categories]
-    column_titles = ["Boss / Result", "Overall"] + [cat["label"] for cat in categories]
+    column_meta = [
+        {"key": "boss", "label": "Boss / Result", "classes": [], "group": None},
+        {"key": "overall", "label": "Overall", "classes": [], "group": None},
+    ]
+    for cat in categories:
+        column_meta.append(
+            {
+                "key": cat["label"],
+                "label": cat["label"],
+                "classes": cat.get("classes", []),
+                "group": cat.get("group"),
+            }
+        )
+    column_labels = [meta["key"] for meta in column_meta]
 
     rows_html: List[str] = []
     for summary in table:
@@ -100,9 +112,54 @@ def render_heatmap(data: Dict[str, object], title: Optional[str] = None) -> str:
         or "CLA Coverage Heatmap"
     )
 
-    head_cells = "".join(
-        f"<th>{col}</th>" for col in column_titles
-    )
+    # Build multi-row header with group bands
+    top_row_cells: List[str] = []
+    idx = 0
+    column_count = len(column_meta)
+    while idx < column_count:
+        meta_entry = column_meta[idx]
+        label = meta_entry["label"]
+        group = meta_entry.get("group")
+        class_list = meta_entry.get("classes") or []
+        if not group:
+            sub_html = ""
+            if class_list:
+                sub_text = " • ".join(class_list)
+                sub_html = f'<div class="header-sub">{sub_text}</div>'
+            top_row_cells.append(
+                f'<th class="group-sticky" rowspan="2"><div class="header-label">{label}</div>{sub_html}</th>'
+            )
+            idx += 1
+        else:
+            span = 0
+            j = idx
+            while j < column_count and column_meta[j].get("group") == group:
+                span += 1
+                j += 1
+            top_row_cells.append(
+                f'<th class="group-header" colspan="{span}">{group}</th>'
+            )
+            idx = j
+
+    bottom_row_cells: List[str] = []
+    for meta_entry in column_meta:
+        group = meta_entry.get("group")
+        if not group:
+            continue
+        label = meta_entry["label"]
+        class_list = meta_entry.get("classes") or []
+        if class_list:
+            sub = " • ".join(class_list)
+            bottom_row_cells.append(
+                f'<th><div class="header-label">{label}</div><div class="header-sub">{sub}</div></th>'
+            )
+        else:
+            bottom_row_cells.append(
+                f'<th><div class="header-label">{label}</div></th>'
+            )
+
+    top_row_html = "".join(top_row_cells)
+    bottom_row_html = "".join(bottom_row_cells)
 
     style = """
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 32px; background: #f6f6f6; }
@@ -114,6 +171,10 @@ def render_heatmap(data: Dict[str, object], title: Optional[str] = None) -> str:
     th.boss-col { text-align: left; font-weight: 600; min-width: 280px; background: #f8f8f8; }
     tr:nth-child(even) > th.boss-col { background: #f3f3f3; }
     td { color: #1f1f1f; font-weight: 600; }
+    .header-label { font-weight: 600; }
+    .header-sub { font-size: 12px; color: #555; margin-top: 4px; white-space: nowrap; }
+    .group-header { text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; background: #e6e6e6; }
+    .group-sticky { background: #f0f0f0; }
     """
 
     meta_lines = []
@@ -137,7 +198,8 @@ def render_heatmap(data: Dict[str, object], title: Optional[str] = None) -> str:
   <div class="meta">{meta_html}</div>
   <table>
     <thead>
-      <tr>{head_cells}</tr>
+      <tr>{top_row_html}</tr>
+      <tr>{bottom_row_html}</tr>
     </thead>
     <tbody>
       {rows_markup}
